@@ -1,0 +1,38 @@
+<DOCTYPE html>
+
+<html charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="css/layout.css" >
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<style>
+	img {
+opacity:.5;
+/*transition:all .5s;*/
+	}
+img:hover {
+opacity:1
+	}
+</style>
+
+<body>
+
+	<img id="button" src="Alpha Knob.svg" />
+</body>
+<script>
+
+var b = $("#button");
+var bsvg = document.getElementById("button");
+var angle = 0;
+
+function roller(e){
+	e.preventDefault();	
+	console.log(e);
+	var delta = e.originalEvent.deltaY;
+	angle += 2 * delta;
+	$(this).css("transform", "rotate(" + angle + "deg)");
+}
+
+$("#button").bind("wheel", roller);
+</script>
+</html>
